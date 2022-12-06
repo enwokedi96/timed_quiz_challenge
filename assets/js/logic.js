@@ -3,7 +3,7 @@ var userAnswer;
 var currentAnswer;
 var areThereStillQuestions;
 var questionCount =  0;
-var totalTime = 60;
+var totalTime = 75;
 var scoreEachIteration=[]
 
 // anchors
@@ -59,7 +59,7 @@ if (initials){
         })
     }
 
-// major event functions
+//------------------------ MAJOR EVENT FUNCTIONS ----------------------
 async function revealQuestions(event) {
     
     var i = questionCount;
