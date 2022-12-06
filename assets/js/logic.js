@@ -12,8 +12,13 @@ var solutionPage = document.querySelector("#end-screen");
 var initials = document.querySelector("#initials");
 var submitInitials = document.querySelector("#submit");
 
-startQuizButton.addEventListener('click',revealQuestions);
-currentQuestion.addEventListener('click', checkSolution);
+if(startQuizButton){
+    startQuizButton.addEventListener('click',revealQuestions);
+}
+
+if(currentQuestion){
+    currentQuestion.addEventListener('click', checkSolution);
+}
 
 async function revealQuestions(event) {
     var i = questionCount;
