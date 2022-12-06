@@ -93,12 +93,15 @@ async function checkSolution(event) {
     msg.textContent = messageUser; 
     currentQuestion.appendChild(msg); let d = await delay(150);
     console.log(`Next Question: ${questionCount}`)
-    questionCount++;
-    revealQuestions();  
-}
+    questionCount++; event.stopPropagation()
 
-if(displayScore){
-    displayScore.textContent = localStorage.getItem("currentScore")};
+    if (areThereStillQuestions===false){
+        displayScore.textContent = localStorage.getItem("currentScore")
+    }
+    else {
+        console.log('meowt 2')
+        revealQuestions(); } 
+}
 
 // -------------------------- ALL HELPER  FUNCTIONS ---------------------------------//
 
@@ -131,6 +134,7 @@ function displayHistory(){
             score: localStorage.getItem("currentScore")};
         console.log(`You're the man, ${initials.value}!!`)
         localStorage.setItem("playerHistory",JSON.stringify(history_));
+        
     }
 }
 
