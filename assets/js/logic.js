@@ -1,5 +1,8 @@
 import allQuestions from './questions.js'
 
+var userAnswer;
+var currentAnswer;
+var areThereStillQuestions;
 var questionCount =  0;
 
 var startQuizButton = document.getElementById("start");
