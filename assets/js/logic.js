@@ -142,10 +142,19 @@ function displayHistory(){
         //return;
         }
     else{
-        var history_ = {user:initials.value.trim(),
-            score: localStorage.getItem("currentScore")};
+        var history_ = {0:initials.value.trim(), 1:localStorage.getItem("currentScore")};
         console.log(`You're the man, ${initials.value}!!`)
-        localStorage.setItem("playerHistory_1",JSON.stringify(history_));
+        
+        if (localStorage.getItem("playerHistory_1") !== null){
+            var obj = JSON.parse(localStorage.getItem("playerHistory_1"));
+            obj.push(history_);
+            localStorage.setItem("playerHistory_1",JSON.stringify(obj));
+        }
+        else{
+            var obj = []; 
+            obj.push(history_);
+            localStorage.setItem("playerHistory_1",JSON.stringify(obj));
+        }
     }
 }
 
