@@ -56,3 +56,9 @@ function clearCurrentQuestions() {
       node.removeChild(node.lastChild);
     }
  }
+
+ function setSelectAttributes(proptag, attrs) {
+    for(var key in attrs) {
+        proptag.setAttribute(key, attrs[key]);
+    }
+  }
