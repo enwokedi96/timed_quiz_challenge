@@ -75,9 +75,19 @@ async function checkSolution(event) {
     var messageUser;
     if (userAnswer==currentAnswer){
             messageUser = "Correct Option Chosen!!";
+            if (localStorage.getItem("currentScore") === null || questionCount===0) {
+                localStorage.setItem("currentScore",1)
+              }
+            else {
+                var newScore = parseInt(localStorage.getItem("currentScore")) + 1;
+                localStorage.setItem("currentScore",newScore)
+            }
         }
     else{
             messageUser = `Wrong Option!!!`;
+            if (localStorage.getItem("currentScore") === null || questionCount===0) {
+                localStorage.setItem("currentScore",0)
+              }
         }
     var msg = document.createElement("h4");
     msg.setAttribute("style", "margin-top: 12px");
