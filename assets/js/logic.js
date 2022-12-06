@@ -34,6 +34,9 @@ startQuizButton.addEventListener("click", function(){
         if(totalTime <= 0){
             clearInterval(downloadTimer);
             timer.innerHTML = "Time is up!"
+            currentQuestion.setAttribute('class','hide');
+            console.log('Finished!')
+            solutionPage.removeAttribute('class','hide');
         }
         }, 1000);
     
@@ -70,9 +73,6 @@ async function revealQuestions(event) {
         currentQuestion.setAttribute('class','hide');
         console.log('Finished!')
         solutionPage.removeAttribute('class','hide');
-        
-        //startQuiz.removeEventListener('click',revealQuestions);
-        //currentQuestion.removeEventListener('click', checkSolution);
     }
 
     else{
@@ -125,7 +125,7 @@ async function checkSolution(event) {
         }
     else{
             messageUser = `Wrong Option!!!`;
-            
+
             // penalize user for wrong option
             totalTime -= 10; 
 
