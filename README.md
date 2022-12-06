@@ -21,8 +21,8 @@ The quiz follows simple rules:
   * On the leaderboard (or highscores page), you can either clear all previous entries or have another go at the quiz.
   
 Images of the various pages are shown below.
-<img alt="screenshot" src="/assets/image/startPage.png" width=400/><img alt="screenshot" src="/assets/image/questionScreenShot.png" width=400/>
-<img alt="screenshot" src="/assets/image/enterInitialsPage.png" width=400/><img alt="screenshot" src="/assets/image/highScorePage.png" width=400/>
+<img alt="screenshot" src="assets/images/startPage.png" width=400/><img alt="screenshot" src="assets/images/questionScreenShot.png" width=400/>
+<img alt="screenshot" src="assets/images/enterInitialsPage.png" width=400/><img alt="screenshot" src="assets/images/highScorePage.png" width=400/>
 
 ## License
 
