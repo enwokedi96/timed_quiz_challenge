@@ -8,7 +8,7 @@ var questionCount =  0;
 var startQuizButton = document.getElementById("start");
 var startPage = document.querySelector(".start");
 var currentQuestion = document.getElementById("questions");
-var displayScore = document.querySelector("#final-score"); s
+var displayScore = document.getElementById("final-score"); 
 var solutionPage = document.querySelector("#end-screen");
 var initials = document.querySelector("#initials");
 var submitInitials = document.querySelector("#submit");
@@ -19,22 +19,35 @@ if(startQuizButton){
 
 if(submitInitials){
     submitInitials.addEventListener('click', displayHistory);
-    submitInitials.setAttribute("onclick","location.href='highscores.html'");
 }
 if(currentQuestion){
     currentQuestion.addEventListener('click', checkSolution);
 }
 
+if (initials){
+    initials.addEventListener('change', function (){
+        submitInitials.setAttribute("onclick","location.href='highscores.html'");
+    })
+}
+
+currentQuestion.addEventListener('click', function(){
+        var num = localStorage.getItem("currentScore");
+        console.log(`score: ${num} `) ;
+        //displayScore.textContent = num;
+        if (areThereStillQuestions){displayScore.appendChild(document.createTextNode(num))}
+});
+
 async function revealQuestions(event) {
     var i = questionCount;
-    clearCurrentQuestions(); 
+    clearCurrentQuestions();
 
     areThereStillQuestions = (allQuestions[Object.keys(allQuestions)[questionCount]]!==undefined)
-    console.log(areThereStillQuestions);
+    //console.log(areThereStillQuestions);
     if (areThereStillQuestions===false) {
         currentQuestion.setAttribute('class','hide');
         console.log('Finished!')
         solutionPage.removeAttribute('class','hide');
+        
         //startQuiz.removeEventListener('click',revealQuestions);
         //currentQuestion.removeEventListener('click', checkSolution);
     }
@@ -67,7 +80,7 @@ async function revealQuestions(event) {
         }
         
     }
-
+    
 }
 
 async function checkSolution(event) {
@@ -94,14 +107,11 @@ async function checkSolution(event) {
     msg.textContent = messageUser; 
     currentQuestion.appendChild(msg); let d = await delay(150);
     console.log(`Next Question: ${questionCount}`)
-    questionCount++; event.stopPropagation()
+    questionCount++; //event.stopPropagation()
 
-    if (areThereStillQuestions===false){
-        displayScore.textContent = localStorage.getItem("currentScore")
-    }
-    else {
-        console.log('meowt 2')
-        revealQuestions(); } 
+    if (areThereStillQuestions){
+        revealQuestions(); 
+    } 
 }
 
 // -------------------------- ALL HELPER  FUNCTIONS ---------------------------------//
@@ -126,16 +136,16 @@ function setSelectAttributes(proptag, attrs) {
 //--------------------------------------------------------
 
 function displayHistory(){
-    if (initials.value===''){
+    if (initials.value.trim()===''){
         console.log("No intials entered!");
-        return;
+        alert("Please enter initials!!")
+        //return;
         }
     else{
         var history_ = {user:initials.value.trim(),
             score: localStorage.getItem("currentScore")};
         console.log(`You're the man, ${initials.value}!!`)
-        localStorage.setItem("playerHistory",JSON.stringify(history_));
-        
+        localStorage.setItem("playerHistory_1",JSON.stringify(history_));
     }
 }
 

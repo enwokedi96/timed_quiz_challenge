@@ -1,9 +1,9 @@
 
 var displayScore = document.querySelector("#final-score"); 
 var display = document.querySelector("#highscores");
-var userScore = localStorage.getItem("currentScore");
+//var userScore = localStorage.getItem("currentScore");
 
-var lastUser = JSON.parse(localStorage.getItem("playerHistory"));
+var lastUser = JSON.parse(localStorage.getItem("playerHistory_1"));
 console.log(lastUser);
 var displayItem = document.createElement("li");
 displayItem.textContent = lastUser.user + ' ----------------------------------------- ' + lastUser.score;
