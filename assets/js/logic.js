@@ -1,10 +1,11 @@
-//import allQuestions from './questions.js'
-
+// user-defined variables
 var userAnswer;
 var currentAnswer;
 var areThereStillQuestions;
 var questionCount =  0;
+var scoreEachIteration=[]
 
+// anchors
 var startQuizButton = document.getElementById("start");
 var startPage = document.querySelector(".start");
 var currentQuestion = document.getElementById("questions");
@@ -30,19 +31,18 @@ if (initials){
     })
 }
 
+// listener to capture last score and display at quizz end
 currentQuestion.addEventListener('click', function(){
         var num = localStorage.getItem("currentScore");
         console.log(`score: ${num} `) ;
-        //displayScore.textContent = num;
-        if (areThereStillQuestions){displayScore.appendChild(document.createTextNode(num))}
-});
+        displayScore.textContent = num;
+    });
 
 async function revealQuestions(event) {
     var i = questionCount;
     clearCurrentQuestions();
 
     areThereStillQuestions = (allQuestions[Object.keys(allQuestions)[questionCount]]!==undefined)
-    //console.log(areThereStillQuestions);
     if (areThereStillQuestions===false) {
         currentQuestion.setAttribute('class','hide');
         console.log('Finished!')
