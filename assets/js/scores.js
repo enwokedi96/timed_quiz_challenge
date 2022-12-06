@@ -5,18 +5,15 @@
 const start = () => {
     setTimeout(function() {
         confetti.start()
-    }, 300); // 1000 is time that after 1 second start the confetti ( 1000 = 1 sec)
+    }, 300); // after time, start the confetti
 };
 
 //  for stopping the confetti 
 const stop = () => {
     setTimeout(function() {
         confetti.stop()
-    }, 3300); // 5000 is time that after 5 second stop the confetti ( 5000 = 5 sec)
+    }, 3300); // after time, stop the confetti
 };
-// after this here we are calling both the function so it works
-start();
-stop();
 
 // ------------------------- MAIN CODES ------------------------------
 var displayScore = document.querySelector("#final-score"); 
@@ -31,9 +28,19 @@ display.appendChild(document.createTextNode('(current scores at last rung!)'));
 for (let i=0; i<lastUsers.length; i++){
     console.log(lastUsers[i])
     var displayItem = document.createElement("li");
-    displayItem.textContent = lastUsers[i][0] + ' ----------------------------------------- ' + lastUsers[i]["1"];
+    displayItem.textContent = lastUsers[i][0] + ' ----------------------------------------- ' + lastUsers[i][1];
     console.log(displayItem);
-    display.appendChild(displayItem);}
+    display.appendChild(displayItem);
+
+    // gift the upperclass a confetti shower
+    if (i==lastUsers.length-1){
+        if (parseInt(lastUsers[i][1])>7){
+            console.log(lastUsers[i][1])
+            start();
+            stop();
+    }
+}
+}
 
 function clearAllLogs() {
         let node = document.getElementById("highscores")
