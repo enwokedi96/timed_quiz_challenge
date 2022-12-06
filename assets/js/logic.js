@@ -3,6 +3,7 @@ var userAnswer;
 var currentAnswer;
 var areThereStillQuestions;
 var questionCount =  0;
+var totalTime = 60;
 var scoreEachIteration=[]
 
 // anchors
@@ -15,26 +16,7 @@ var initials = document.querySelector("#initials");
 var submitInitials = document.querySelector("#submit");
 var timer = document.querySelector("#time");
 
-var totalTime = 60;
 timer.innerHTML = `${totalTime}`
-
-if(startQuizButton){
-    startQuizButton.addEventListener('click',revealQuestions);
-}
-
-if(submitInitials){
-    submitInitials.addEventListener('click', displayHistory);
-}
-
-if(currentQuestion){
-    currentQuestion.addEventListener('click', checkSolution);
-}
-
-if (initials){
-    initials.addEventListener('change', function (){
-        submitInitials.setAttribute("onclick","location.href='highscores.html'");
-    })
-}
 
 // listener to capture last score and display at quizz end
 currentQuestion.addEventListener('click', function(){
@@ -45,13 +27,11 @@ currentQuestion.addEventListener('click', function(){
 
 // Add countdown timer to start button
 startQuizButton.addEventListener("click", function(){
-        var timeleft = 60;
-    
         var downloadTimer = setInterval(function function1(){
-        timer.innerHTML = timeleft + "&nbsp"+"seconds remaining";
+        timer.innerHTML = totalTime + "&nbsp"+"seconds remaining";
     
-        timeleft -= 1;
-        if(timeleft <= 0){
+        totalTime -= 1;
+        if(totalTime <= 0){
             clearInterval(downloadTimer);
             timer.innerHTML = "Time is up!"
         }
@@ -60,6 +40,26 @@ startQuizButton.addEventListener("click", function(){
         //console.log(countdown);
     });
 
+// Other eventlisteners
+if(startQuizButton){
+        startQuizButton.addEventListener('click',revealQuestions);
+    }
+    
+if(submitInitials){
+        submitInitials.addEventListener('click', displayHistory);
+    }
+    
+if(currentQuestion){
+        currentQuestion.addEventListener('click', checkSolution);
+    }
+    
+if (initials){
+        initials.addEventListener('change', function (){
+            submitInitials.setAttribute("onclick","location.href='highscores.html'");
+        })
+    }
+
+// major event functions
 async function revealQuestions(event) {
     
     var i = questionCount;
@@ -139,6 +139,30 @@ async function checkSolution(event) {
     } 
 }
 
+function displayHistory(){
+    if (initials.value.trim()===''){
+        console.log("No intials entered!");
+        alert("Please enter initials!!")
+        //return;
+        }
+    else{
+        var history_ = {0:initials.value.trim(), 1:localStorage.getItem("currentScore")};
+        console.log(`You're the man, ${initials.value}!!`)
+        
+        if (localStorage.getItem("playerHistory_1") !== null){
+            var obj = JSON.parse(localStorage.getItem("playerHistory_1"));
+            obj.push(history_);
+            localStorage.setItem("playerHistory_1",JSON.stringify(obj));
+        }
+        else{
+            var obj = []; 
+            obj.push(history_);
+            localStorage.setItem("playerHistory_1",JSON.stringify(obj));
+        }
+    }
+}
+
+
 // -------------------------- ALL HELPER  FUNCTIONS ---------------------------------//
 
 const delay = (delayInms) => {
@@ -164,27 +188,4 @@ function setSelectAttributes(proptag, attrs) {
   }
 
 //--------------------------------------------------------
-
-function displayHistory(){
-    if (initials.value.trim()===''){
-        console.log("No intials entered!");
-        alert("Please enter initials!!")
-        //return;
-        }
-    else{
-        var history_ = {0:initials.value.trim(), 1:localStorage.getItem("currentScore")};
-        console.log(`You're the man, ${initials.value}!!`)
-        
-        if (localStorage.getItem("playerHistory_1") !== null){
-            var obj = JSON.parse(localStorage.getItem("playerHistory_1"));
-            obj.push(history_);
-            localStorage.setItem("playerHistory_1",JSON.stringify(obj));
-        }
-        else{
-            var obj = []; 
-            obj.push(history_);
-            localStorage.setItem("playerHistory_1",JSON.stringify(obj));
-        }
-    }
-}
 
