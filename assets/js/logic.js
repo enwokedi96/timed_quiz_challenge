@@ -1,9 +1,9 @@
 import allQuestions from './questions.js'
 
-var userAnswer;
-var currentAnswer;
-var areThereStillQuestions;
-var questionCount =  0;
+var userAnswer; // contains the user response to each question
+var currentAnswer; // contains the correct response to each question
+var areThereStillQuestions; // boolean checks for next question
+var questionCount =  0; // returns key for needed to load next question
 
 var startQuizButton = document.getElementById("start");
 var startPage = document.querySelector(".start");
@@ -13,6 +13,7 @@ var initials = document.querySelector("#initials");
 var submitInitials = document.querySelector("#submit");
 
 startQuizButton.addEventListener('click',revealQuestions);
+currentQuestion.addEventListener('click', checkSolution);
 
 async function revealQuestions(event) {
     var i = questionCount;
@@ -57,6 +58,26 @@ async function revealQuestions(event) {
     }
 
 }
+
+async function checkSolution(event) {
+    console.log(`user: ${userAnswer} | answer: ${currentAnswer}`);
+    var messageUser;
+    if (userAnswer==currentAnswer){
+            messageUser = "Correct Option Chosen!!";
+        }
+    else{
+            messageUser = `Wrong Option!!!`;
+        }
+    var msg = document.createElement("h4");
+    msg.setAttribute("style", "margin-top: 12px");
+    msg.textContent = messageUser; 
+    currentQuestion.appendChild(msg); let d = await delay(120);
+    console.log(`Next Question: ${questionCount}`)
+    questionCount++;
+    //event.stopPropagation();
+    revealQuestions();  
+}
+
 // -------------------------- ALL HELPER  FUNCTIONS ---------------------------------//
 
 const delay = (delayInms) => {
