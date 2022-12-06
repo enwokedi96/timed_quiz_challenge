@@ -8,6 +8,7 @@ var questionCount =  0;
 var startQuizButton = document.getElementById("start");
 var startPage = document.querySelector(".start");
 var currentQuestion = document.getElementById("questions");
+var displayScore = document.querySelector("#final-score"); s
 var solutionPage = document.querySelector("#end-screen");
 var initials = document.querySelector("#initials");
 var submitInitials = document.querySelector("#submit");
@@ -68,25 +69,6 @@ async function revealQuestions(event) {
 
 }
 
-// -------------------------- ALL HELPER  FUNCTIONS ---------------------------------//
-
-const delay = (delayInms) => {
-    return new Promise(resolve => setTimeout(resolve, delayInms));
-  }
-
-function clearCurrentQuestions() {
-   let node = document.getElementById("questions")
-   while(node.hasChildNodes()) {
-     node.removeChild(node.lastChild);
-   }
-}
-
-function setSelectAttributes(proptag, attrs) {
-    for(var key in attrs) {
-        proptag.setAttribute(key, attrs[key]);
-    }
-  }
-
 async function checkSolution(event) {
     console.log(`user: ${userAnswer} | answer: ${currentAnswer}`);
     var messageUser;
@@ -114,6 +96,28 @@ async function checkSolution(event) {
     questionCount++;
     revealQuestions();  
 }
+
+if(displayScore){
+    displayScore.textContent = localStorage.getItem("currentScore")};
+
+// -------------------------- ALL HELPER  FUNCTIONS ---------------------------------//
+
+const delay = (delayInms) => {
+    return new Promise(resolve => setTimeout(resolve, delayInms));
+  }
+
+function clearCurrentQuestions() {
+   let node = document.getElementById("questions")
+   while(node.hasChildNodes()) {
+     node.removeChild(node.lastChild);
+   }
+}
+
+function setSelectAttributes(proptag, attrs) {
+    for(var key in attrs) {
+        proptag.setAttribute(key, attrs[key]);
+    }
+  }
 
 //--------------------------------------------------------
 
