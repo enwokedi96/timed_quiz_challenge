@@ -1,7 +1,10 @@
 # timed_quiz_challenge
 
 This is a quiz challenge! Here, questions regarding frontend development have been specially curated and put in an interactive
-interface to help boost both speed and accuracy of answers in real-life situations. The rules of the quiz and other details are shown below.
+interface to help boost both speed and accuracy of answers in real-life situations. And who knows... you might just be gifted a
+confetti shower if you do well enough. 
+
+The rules of the quiz and other details are shown below.
 
 ## Installation
 
@@ -18,8 +21,9 @@ The quiz follows simple rules:
   * On the leaderboard (or highscores page), you can either clear all previous entries or have another go at the quiz.
   
 Images of the various pages are shown below.
-<img alt="screenshot" src="image/screenshot.png" width=400/>
-    
+<img alt="screenshot" src="/assets/image/startPage.png" width=400/><img alt="screenshot" src="/assets/image/questionScreenShot.png" width=400/>
+<img alt="screenshot" src="/assets/image/enterInitialsPage.png" width=400/><img alt="screenshot" src="/assets/image/highScorePage.png" width=400/>
+
 ## License
 
 Link to license can be found [here](LICENSE.md).
