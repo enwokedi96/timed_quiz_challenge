@@ -109,7 +109,7 @@ async function checkSolution(event) {
     var msg = document.createElement("h4");
     msg.setAttribute("style", "margin-top: 12px");
     msg.textContent = messageUser; 
-    currentQuestion.appendChild(msg); let d = await delay(120);
+    currentQuestion.appendChild(msg); let d = await delay(150);
     console.log(`Next Question: ${questionCount}`)
     questionCount++;
     revealQuestions();  
