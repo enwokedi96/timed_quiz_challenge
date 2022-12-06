@@ -26,6 +26,32 @@ var allQuestions = {
             'Liasing with JavaScripts to implement user-informed styles',
             'Partitioning of spatial dimensions of page into relevant html contents', 
             'Porting styles from external sources to local CSS'],
-        answer: 2 
-    }
+        answer: 2 },
+    5:{
+        question: 'Inside which HTML element do we put the JavaScript?',
+        options: ['<body>','<script>','<head>','<js>'],
+        answer: 1 },
+    6:{
+        question: "Given that the id of a paragraph tag is 'snaky-puppy', which is a valid way to edit the tag in JavaScript?",
+        options: ['document.getElementByName("snaky-puppy").content = "Awesome band bruv!"',
+                    'document.getElementById("snaky-puppy").content = "Awesome band bruv!"',
+                    'document.getElement("p").innerHTML = "Awesome band bruv!"',
+                    'document.getElementById("snaky-puppy").innerHTML = "Awesome band bruv!"'],
+        answer: 3 },
+    7:{
+        question: 'Inside which HTML element do we put the JavaScript?',
+        options: ['<body>','<script>','<head>','<js>'],
+        answer: 1 },
+    8:{
+        question: 'Inside which HTML element do we put the JavaScript?',
+        options: ['<body>','<script>','<head>','<js>'],
+        answer: 1 },
+    9:{
+        question: 'Inside which HTML element do we put the JavaScript?',
+        options: ['<body>','<script>','<head>','<js>'],
+        answer: 1 },
+    10:{
+        question: 'Inside which HTML element do we put the JavaScript?',
+        options: ['<body>','<script>','<head>','<js>'],
+        answer: 1 },
 }
