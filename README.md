@@ -8,7 +8,7 @@ The rules of the quiz and other details are shown below.
 
 ## Installation
 
-To tryout the quiz, please visit the live deployment [here]().
+To tryout the quiz, please visit the live deployment [here](https://enwokedi96.github.io/timed_quiz_challenge/).
 
 ## Usage
 
