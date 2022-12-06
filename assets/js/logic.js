@@ -20,6 +20,11 @@ if(currentQuestion){
     currentQuestion.addEventListener('click', checkSolution);
 }
 
+if(submitInitials){
+    submitInitials.addEventListener('click', displayHistory);
+    submitInitials.setAttribute("onclick","location.href='highscores.html'");
+}
+
 async function revealQuestions(event) {
     var i = questionCount;
     clearCurrentQuestions(); 
@@ -64,6 +69,7 @@ async function revealQuestions(event) {
 
 }
 
+// check the user answer against the correct answer
 async function checkSolution(event) {
     console.log(`user: ${userAnswer} | answer: ${currentAnswer}`);
     var messageUser;
@@ -81,6 +87,19 @@ async function checkSolution(event) {
     questionCount++;
     //event.stopPropagation();
     revealQuestions();  
+}
+
+function displayHistory(){
+    if (initials.value===''){
+        console.log("No intials entered!");
+        return;
+        }
+    else{
+        var history_ = {user:initials.value.trim(),
+            score: localStorage.getItem("currentScore")};
+        console.log(`You're the man, ${initials.value}!!`)
+        localStorage.setItem("playerHistory",JSON.stringify(history_));
+    }
 }
 
 // -------------------------- ALL HELPER  FUNCTIONS ---------------------------------//
