@@ -1,21 +1,24 @@
+
+// Confetti visuals (adapted from CoderZ90)
+
 // for starting the confetti 
 const start = () => {
     setTimeout(function() {
         confetti.start()
-    }, 1000); // 1000 is time that after 1 second start the confetti ( 1000 = 1 sec)
+    }, 300); // 1000 is time that after 1 second start the confetti ( 1000 = 1 sec)
 };
 
 //  for stopping the confetti 
 const stop = () => {
     setTimeout(function() {
         confetti.stop()
-    }, 5000); // 5000 is time that after 5 second stop the confetti ( 5000 = 5 sec)
+    }, 3300); // 5000 is time that after 5 second stop the confetti ( 5000 = 5 sec)
 };
 // after this here we are calling both the function so it works
 start();
 stop();
 
-// --------------- MAIN CODES ----------------------
+// ------------------------- MAIN CODES ------------------------------
 var displayScore = document.querySelector("#final-score"); 
 var display = document.querySelector("#highscores");
 var clearLeaderboard = document.querySelector("#clear")

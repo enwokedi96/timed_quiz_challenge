@@ -57,6 +57,7 @@ async function revealQuestions(event) {
     if (areThereStillQuestions===false) {
         totalTime = null;
         timer.innerHTML = "All questions answered!";
+        let d = await delay(222);
         currentQuestion.setAttribute('class','hide');
         console.log('Finished!');
         solutionPage.removeAttribute('class','hide');
@@ -85,7 +86,7 @@ async function revealQuestions(event) {
             selectOpt.appendChild(optText);
             currentQuestion.appendChild(selectOpt); 
             currentQuestion.appendChild(document.createElement("br"));
-            let d = await delay(100);
+            let d = await delay(50);
             currentAnswer = allQuestions[Object.keys(allQuestions)[questionCount]]["answer"]
         }
         
@@ -124,7 +125,7 @@ async function checkSolution(event) {
     var msg = document.createElement("h4");
     msg.setAttribute("style", "margin-top: 12px");
     msg.textContent = messageUser; 
-    currentQuestion.appendChild(msg); let d = await delay(150);
+    currentQuestion.appendChild(msg); let d = await delay(200);
     console.log(`Next Question: ${questionCount}`)
     questionCount++; //event.stopPropagation()
 
