@@ -135,20 +135,24 @@ async function checkSolution(event) {
 }
 
 function displayHistory(){
+    // check if user has entered initials and if not, alert
     if (initials.value.trim()===''){
         console.log("No intials entered!");
         alert("Please enter initials!!")
         //return;
         }
     else{
+        // create object containing user initial and user  score as entries
         var history_ = {0:initials.value.trim(), 1:localStorage.getItem("currentScore")};
         console.log(`You're the man, ${initials.value}!!`)
         
+        // if there is existing history of scores, append current entry
         if (localStorage.getItem("playerHistory_1") !== null){
             var obj = JSON.parse(localStorage.getItem("playerHistory_1"));
             obj.push(history_);
             localStorage.setItem("playerHistory_1",JSON.stringify(obj));
         }
+        // else if first player, create new list and append user object
         else{
             var obj = []; 
             obj.push(history_);
@@ -160,10 +164,12 @@ function displayHistory(){
 
 // -------------------------- ALL HELPER  FUNCTIONS ---------------------------------//
 
+// timeout used to add delays (adapted)
 const delay = (delayInms) => {
     return new Promise(resolve => setTimeout(resolve, delayInms));
   }
 
+// clear out previous question in questions tag
 function clearCurrentQuestions() {
    let node = document.getElementById("questions")
    while(node.hasChildNodes()) {
@@ -171,12 +177,14 @@ function clearCurrentQuestions() {
    }
 }
 
+// automate setting multiple atttributes to elements
 function setSelectAttributes(proptag, attrs) {
     for(var key in attrs) {
         proptag.setAttribute(key, attrs[key]);
     }
   }
 
+// countdown function for timer
 function countTimerDown() {
     var downloadTimer = setInterval(function function1(){
     timer.innerHTML = totalTime + "&nbsp"+"seconds remaining";
