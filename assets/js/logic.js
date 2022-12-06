@@ -13,6 +13,10 @@ var displayScore = document.getElementById("final-score");
 var solutionPage = document.querySelector("#end-screen");
 var initials = document.querySelector("#initials");
 var submitInitials = document.querySelector("#submit");
+var timer = document.querySelector("#time");
+
+var totalTime = 60;
+timer.innerHTML = `${totalTime}`
 
 if(startQuizButton){
     startQuizButton.addEventListener('click',revealQuestions);
@@ -21,6 +25,7 @@ if(startQuizButton){
 if(submitInitials){
     submitInitials.addEventListener('click', displayHistory);
 }
+
 if(currentQuestion){
     currentQuestion.addEventListener('click', checkSolution);
 }
@@ -38,7 +43,25 @@ currentQuestion.addEventListener('click', function(){
         displayScore.textContent = num;
     });
 
+// Add countdown timer to start button
+startQuizButton.addEventListener("click", function(){
+        var timeleft = 60;
+    
+        var downloadTimer = setInterval(function function1(){
+        timer.innerHTML = timeleft + "&nbsp"+"seconds remaining";
+    
+        timeleft -= 1;
+        if(timeleft <= 0){
+            clearInterval(downloadTimer);
+            timer.innerHTML = "Time is up!"
+        }
+        }, 1000);
+    
+        //console.log(countdown);
+    });
+
 async function revealQuestions(event) {
+    
     var i = questionCount;
     clearCurrentQuestions();
 
@@ -55,7 +78,7 @@ async function revealQuestions(event) {
     else{
         if (i==0){
             startPage.setAttribute('class','fadeOut')
-            let d = await delay(1000);
+            let d = await delay(500);
             startPage.setAttribute('class','hide');
         }
 
@@ -80,6 +103,8 @@ async function revealQuestions(event) {
         }
         
     }
+
+    //return (document.removeEventListener("click", revealQuestions));
     
 }
 
@@ -119,6 +144,11 @@ async function checkSolution(event) {
 const delay = (delayInms) => {
     return new Promise(resolve => setTimeout(resolve, delayInms));
   }
+
+// startQuizButton.onclick(setInterval(countTimerDown,1000));
+// function countTimerDown(){
+//     totalTime--;
+//     timer.innerHTML = `${totalTime}`;}
 
 function clearCurrentQuestions() {
    let node = document.getElementById("questions")
