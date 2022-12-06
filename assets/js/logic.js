@@ -1,4 +1,4 @@
-import allQuestions from './questions.js'
+//import allQuestions from './questions.js'
 
 var userAnswer;
 var currentAnswer;
@@ -62,9 +62,10 @@ async function revealQuestions(event) {
             selectOpt.appendChild(optText);
             currentQuestion.appendChild(selectOpt); 
             currentQuestion.appendChild(document.createElement("br"));
-            let d = await delay(200);
+            let d = await delay(100);
+            currentAnswer = allQuestions[Object.keys(allQuestions)[questionCount]]["answer"]
         }
-        currentAnswer = allQuestions[Object.keys(allQuestions)[questionCount]]["answer"]
+        
     }
 
 }
