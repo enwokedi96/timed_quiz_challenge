@@ -26,22 +26,7 @@ currentQuestion.addEventListener('click', function(){
     });
 
 // Add countdown timer to start button
-startQuizButton.addEventListener("click", function(){
-        var downloadTimer = setInterval(function function1(){
-        timer.innerHTML = totalTime + "&nbsp"+"seconds remaining";
-    
-        totalTime -= 1;
-        if(totalTime <= 0){
-            clearInterval(downloadTimer);
-            timer.innerHTML = "Time is up!"
-            currentQuestion.setAttribute('class','hide');
-            console.log('Finished!')
-            solutionPage.removeAttribute('class','hide');
-        }
-        }, 1000);
-    
-        //console.log(countdown);
-    });
+startQuizButton.addEventListener("click", countTimerDown);
 
 // Other eventlisteners
 if(startQuizButton){
@@ -70,8 +55,10 @@ async function revealQuestions(event) {
 
     areThereStillQuestions = (allQuestions[Object.keys(allQuestions)[questionCount]]!==undefined)
     if (areThereStillQuestions===false) {
+        totalTime = null;
+        timer.innerHTML = "All questions answered!";
         currentQuestion.setAttribute('class','hide');
-        console.log('Finished!')
+        console.log('Finished!');
         solutionPage.removeAttribute('class','hide');
     }
 
@@ -118,7 +105,7 @@ async function checkSolution(event) {
                 localStorage.setItem("currentScore",1)
               }
             // update score to most recent in local storage
-            else {
+            else if (questionCount>0) {
                 var newScore = parseInt(localStorage.getItem("currentScore")) + 1;
                 localStorage.setItem("currentScore",newScore)
             }
@@ -188,6 +175,23 @@ function setSelectAttributes(proptag, attrs) {
         proptag.setAttribute(key, attrs[key]);
     }
   }
+
+function countTimerDown() {
+    var downloadTimer = setInterval(function function1(){
+    timer.innerHTML = totalTime + "&nbsp"+"seconds remaining";
+
+    totalTime -= 1;
+    if(totalTime <= 0){
+        clearInterval(downloadTimer);
+        timer.innerHTML = "Time is up!"
+        currentQuestion.setAttribute('class','hide');
+        console.log('Finished!')
+        solutionPage.removeAttribute('class','hide');
+    }
+    }, 1000);
+
+    //console.log(countdown);
+}
 
 //--------------------------------------------------------
 
