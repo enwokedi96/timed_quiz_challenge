@@ -34,24 +34,28 @@ var allQuestions = {
     6:{
         question: "Given that the id of a paragraph tag is 'snaky-puppy', which is a valid way to edit the tag in JavaScript?",
         options: ['document.getElementByName("snaky-puppy").content = "Awesome band bruv!"',
-                    'document.getElementById("snaky-puppy").content = "Awesome band bruv!"',
-                    'document.getElement("p").innerHTML = "Awesome band bruv!"',
-                    'document.getElementById("snaky-puppy").innerHTML = "Awesome band bruv!"'],
+                    'document.getElementById("snaky-puppy").content = "Nah, I rather Enya"',
+                    'document.getElement("p").innerHTML = "Hmmmm... Sounds fishy..."',
+                    'document.getElementById("snaky-puppy").innerHTML = "One of the best!"'],
         answer: 3 },
     7:{
-        question: 'Inside which HTML element do we put the JavaScript?',
-        options: ['<body>','<script>','<head>','<js>'],
-        answer: 1 },
+        question: 'Which browser in-built function(s) will you summon to get user input as boolean?',
+        options: ['Confirm','Prompt','Alert','Prompts and Confirm'],
+        answer: 0 },
     8:{
-        question: 'Inside which HTML element do we put the JavaScript?',
-        options: ['<body>','<script>','<head>','<js>'],
-        answer: 1 },
+        question: 'The declarations "if(!(potter))" and "if(potter===false)" are one and the same?',
+        options: ['True','False','not enough info'],
+        answer: 2 },
     9:{
-        question: 'Inside which HTML element do we put the JavaScript?',
-        options: ['<body>','<script>','<head>','<js>'],
+        question: 'The external JavaScript file must contain the <script> tag.',
+        options: ['True','False'],
         answer: 1 },
     10:{
-        question: 'Inside which HTML element do we put the JavaScript?',
-        options: ['<body>','<script>','<head>','<js>'],
+        question: 'Which statement gives a more adequate analogy of HTML and CSS?',
+        options: ['CSS is solely dynamic behaviours and HTML for styles',
+                    'HTML is the skeleton and CSS the beautifier',
+                    'HTML models dynamic interconnections between selectors and CSS models styles',
+                    'CSS is the framework and HTML the sparkles'],
         answer: 1 },
 }
+
