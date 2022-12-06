@@ -1,9 +1,9 @@
 import allQuestions from './questions.js'
 
-var userAnswer; // contains the user response to each question
-var currentAnswer; // contains the correct response to each question
-var areThereStillQuestions; // boolean checks for next question
-var questionCount =  0; // returns key for needed to load next question
+var userAnswer;
+var currentAnswer;
+var areThereStillQuestions;
+var questionCount =  0;
 
 var startQuizButton = document.getElementById("start");
 var startPage = document.querySelector(".start");
@@ -15,14 +15,15 @@ var submitInitials = document.querySelector("#submit");
 if(startQuizButton){
     startQuizButton.addEventListener('click',revealQuestions);
 }
-
-if(currentQuestion){
-    currentQuestion.addEventListener('click', checkSolution);
-}
-
+// if(startQuizButton){  
+//     initials.addEventListener('change', displayHistory)
+// }
 if(submitInitials){
     submitInitials.addEventListener('click', displayHistory);
     submitInitials.setAttribute("onclick","location.href='highscores.html'");
+}
+if(currentQuestion){
+    currentQuestion.addEventListener('click', checkSolution);
 }
 
 async function revealQuestions(event) {
@@ -69,7 +70,30 @@ async function revealQuestions(event) {
 
 }
 
-// check the user answer against the correct answer
+// -------------------------- ALL HELPER  FUNCTIONS ---------------------------------//
+
+const delay = (delayInms) => {
+    return new Promise(resolve => setTimeout(resolve, delayInms));
+  }
+
+function clearCurrentQuestions() {
+   let node = document.getElementById("questions")
+   while(node.hasChildNodes()) {
+     node.removeChild(node.lastChild);
+   }
+}
+
+// // define check boxes mutuality for password lengths
+// function selectOnlyOne (obj) {
+//     userAnswer = obj.id;
+//   }
+
+function setSelectAttributes(proptag, attrs) {
+    for(var key in attrs) {
+        proptag.setAttribute(key, attrs[key]);
+    }
+  }
+
 async function checkSolution(event) {
     console.log(`user: ${userAnswer} | answer: ${currentAnswer}`);
     var messageUser;
@@ -99,6 +123,9 @@ async function checkSolution(event) {
     revealQuestions();  
 }
 
+//--------------------------------------------------------
+//var userScore = parseInt(localStorage.getItem("currentScore"));
+
 function displayHistory(){
     if (initials.value===''){
         console.log("No intials entered!");
@@ -112,21 +139,3 @@ function displayHistory(){
     }
 }
 
-// -------------------------- ALL HELPER  FUNCTIONS ---------------------------------//
-
-const delay = (delayInms) => {
-    return new Promise(resolve => setTimeout(resolve, delayInms));
-  }
-
-function clearCurrentQuestions() {
-    let node = document.getElementById("questions")
-    while(node.hasChildNodes()) {
-      node.removeChild(node.lastChild);
-    }
- }
-
- function setSelectAttributes(proptag, attrs) {
-    for(var key in attrs) {
-        proptag.setAttribute(key, attrs[key]);
-    }
-  }
