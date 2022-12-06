@@ -1,3 +1,7 @@
+// global key values correspond to the question number
+// global values include the question, options and answer
+// the options is an array and the answer is the index of the correct option in the array
+
 var allQuestions = {
     1:{
         question: 'What skill does a front-end developer not need?',
