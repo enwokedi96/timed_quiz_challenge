@@ -1,3 +1,4 @@
+import allQuestions from './questions.js'
 
 var questionCount =  0;
 
@@ -14,6 +15,9 @@ async function revealQuestions(event) {
     var i = questionCount;
 
     clearCurrentQuestions(); 
+
+    areThereStillQuestions = (allQuestions[Object.keys(allQuestions)[questionCount]]!==undefined)
+    console.log(areThereStillQuestions);
 
     currentQuestion.setAttribute('class','hide');
     console.log('Finished!')
