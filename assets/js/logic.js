@@ -44,7 +44,7 @@ startQuizButton.addEventListener("click", function(){
 if(startQuizButton){
         startQuizButton.addEventListener('click',revealQuestions);
     }
-    
+   
 if(submitInitials){
         submitInitials.addEventListener('click', displayHistory);
     }
@@ -113,9 +113,11 @@ async function checkSolution(event) {
     var messageUser;
     if (userAnswer==currentAnswer){
             messageUser = "Correct Option Chosen!!";
+            // set score in local storage if question 1
             if (localStorage.getItem("currentScore") === null || questionCount===0) {
                 localStorage.setItem("currentScore",1)
               }
+            // update score to most recent in local storage
             else {
                 var newScore = parseInt(localStorage.getItem("currentScore")) + 1;
                 localStorage.setItem("currentScore",newScore)
@@ -123,6 +125,9 @@ async function checkSolution(event) {
         }
     else{
             messageUser = `Wrong Option!!!`;
+            // penalize user for wrong option
+            totalTime -= 10; 
+            // set score in local storage if question 1
             if (localStorage.getItem("currentScore") === null || questionCount===0) {
                 localStorage.setItem("currentScore",0)
               }
@@ -168,11 +173,6 @@ function displayHistory(){
 const delay = (delayInms) => {
     return new Promise(resolve => setTimeout(resolve, delayInms));
   }
-
-// startQuizButton.onclick(setInterval(countTimerDown,1000));
-// function countTimerDown(){
-//     totalTime--;
-//     timer.innerHTML = `${totalTime}`;}
 
 function clearCurrentQuestions() {
    let node = document.getElementById("questions")
