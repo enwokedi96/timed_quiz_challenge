@@ -15,9 +15,7 @@ var submitInitials = document.querySelector("#submit");
 if(startQuizButton){
     startQuizButton.addEventListener('click',revealQuestions);
 }
-// if(startQuizButton){  
-//     initials.addEventListener('change', displayHistory)
-// }
+
 if(submitInitials){
     submitInitials.addEventListener('click', displayHistory);
     submitInitials.setAttribute("onclick","location.href='highscores.html'");
@@ -83,11 +81,6 @@ function clearCurrentQuestions() {
    }
 }
 
-// // define check boxes mutuality for password lengths
-// function selectOnlyOne (obj) {
-//     userAnswer = obj.id;
-//   }
-
 function setSelectAttributes(proptag, attrs) {
     for(var key in attrs) {
         proptag.setAttribute(key, attrs[key]);
@@ -119,12 +112,10 @@ async function checkSolution(event) {
     currentQuestion.appendChild(msg); let d = await delay(120);
     console.log(`Next Question: ${questionCount}`)
     questionCount++;
-    //event.stopPropagation();
     revealQuestions();  
 }
 
 //--------------------------------------------------------
-//var userScore = parseInt(localStorage.getItem("currentScore"));
 
 function displayHistory(){
     if (initials.value===''){
