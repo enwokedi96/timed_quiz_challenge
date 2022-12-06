@@ -16,6 +16,7 @@ var initials = document.querySelector("#initials");
 var submitInitials = document.querySelector("#submit");
 var timer = document.querySelector("#time");
 
+// set time in HTML file
 timer.innerHTML = `${totalTime}`
 
 // listener to capture last score and display at quizz end
@@ -66,10 +67,10 @@ async function revealQuestions(event) {
     else{
         if (i==0){
             startPage.setAttribute('class','fadeOut')
-            let d = await delay(500);
+            let d = await delay(500); // give time for fadeout effect
             startPage.setAttribute('class','hide');
         }
-
+        // create question element and append buttons for each option
         var askQuestion = document.createElement("h2");
         askQuestion.textContent = allQuestions[Object.keys(allQuestions)[i]]["question"];
         currentQuestion.appendChild(askQuestion);
@@ -86,13 +87,11 @@ async function revealQuestions(event) {
             selectOpt.appendChild(optText);
             currentQuestion.appendChild(selectOpt); 
             currentQuestion.appendChild(document.createElement("br"));
-            let d = await delay(50);
+            let d = await delay(75);
             currentAnswer = allQuestions[Object.keys(allQuestions)[questionCount]]["answer"]
         }
         
     }
-
-    //return (document.removeEventListener("click", revealQuestions));
     
 }
 
