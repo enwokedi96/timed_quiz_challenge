@@ -125,8 +125,10 @@ async function checkSolution(event) {
         }
     else{
             messageUser = `Wrong Option!!!`;
+            
             // penalize user for wrong option
             totalTime -= 10; 
+
             // set score in local storage if question 1
             if (localStorage.getItem("currentScore") === null || questionCount===0) {
                 localStorage.setItem("currentScore",0)
