@@ -8,9 +8,9 @@ var solutionPage = document.querySelector("#end-screen");
 var initials = document.querySelector("#initials");
 var submitInitials = document.querySelector("#submit");
 
+startQuizButton.addEventListener('click',revealQuestions);
 
-
-function revealQuestions(event) {
+async function revealQuestions(event) {
     var i = questionCount;
 
     currentQuestion.setAttribute('class','hide');
@@ -19,7 +19,14 @@ function revealQuestions(event) {
     
  
     startPage.setAttribute('class','fadeOut')
+    let d = await delay(1000);
     startPage.setAttribute('class','hide');
         
 }
+
+// -------------------------- ALL HELPER  FUNCTIONS ---------------------------------//
+
+const delay = (delayInms) => {
+    return new Promise(resolve => setTimeout(resolve, delayInms));
+  }
 
