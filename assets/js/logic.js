@@ -95,12 +95,7 @@ async function revealQuestions(event) {
             currentQuestion.appendChild(selectOpt); 
             currentQuestion.appendChild(document.createElement("br"));
             let d = await delay(75);
-            currentAnswer = allQuestions[Object.keys(allQuestions)[questionCount]]["answer"]
-
-            // if (parseInt(userAnswer)===currentAnswer){
-            //     selectOpt.onclick(audioCorrect.play())
-            // }
-            // else{selectOpt.onclick(audioWrong.play())}
+            currentAnswer = allQuestions[Object.keys(allQuestions)[questionCount]]["answer"];
         }
         
     }
@@ -112,7 +107,6 @@ async function checkSolution(event) {
     var messageUser;
     if (userAnswer==currentAnswer){
             messageUser = "Correct Option Chosen!!";
-            //document.getElementById(`${userAnswer}`).onclick(audioCorrect.play())
             // set score in local storage if question 1
             if (localStorage.getItem("currentScore") === null || questionCount===0) {
                 localStorage.setItem("currentScore",1)
