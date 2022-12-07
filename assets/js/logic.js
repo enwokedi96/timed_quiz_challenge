@@ -6,6 +6,9 @@ var questionCount =  0;
 var totalTime = 75;
 var scoreEachIteration=[]
 
+var audioCorrect = new Audio('./assets/sfx/correct.wav');
+var audioWrong = new Audio('./assets/sfx/incorrect.wav');
+
 // anchors
 var startQuizButton = document.getElementById("start");
 var startPage = document.querySelector(".start");
@@ -82,13 +85,22 @@ async function revealQuestions(event) {
                                             "style": `text-align: left;`})
             selectOpt.onclick = function(e) {
                 console.log(this.id);
-                userAnswer = this.id;};
+                userAnswer = this.id;
+                if (parseInt(userAnswer)===allQuestions[Object.keys(allQuestions)[questionCount]]["answer"]){
+                    audioCorrect.play();
+                }
+                else{audioWrong.play()}};
             var optText = document.createTextNode(`option ${j+1} :${opt}`); //document.createElement("label");       
             selectOpt.appendChild(optText);
             currentQuestion.appendChild(selectOpt); 
             currentQuestion.appendChild(document.createElement("br"));
             let d = await delay(75);
             currentAnswer = allQuestions[Object.keys(allQuestions)[questionCount]]["answer"]
+
+            // if (parseInt(userAnswer)===currentAnswer){
+            //     selectOpt.onclick(audioCorrect.play())
+            // }
+            // else{selectOpt.onclick(audioWrong.play())}
         }
         
     }
@@ -100,6 +112,7 @@ async function checkSolution(event) {
     var messageUser;
     if (userAnswer==currentAnswer){
             messageUser = "Correct Option Chosen!!";
+            //document.getElementById(`${userAnswer}`).onclick(audioCorrect.play())
             // set score in local storage if question 1
             if (localStorage.getItem("currentScore") === null || questionCount===0) {
                 localStorage.setItem("currentScore",1)
